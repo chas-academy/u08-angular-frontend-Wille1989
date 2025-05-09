@@ -1,0 +1,18 @@
+<p>disc-create works!</p>
+<form (ngSubmit)="onSubmit()" #discForm="ngForm">
+    <input type="text" name="title" [(ngModel)]="disc.title" placeholder="Title" required />
+    <input type="text" name="type" [(ngModel)]="disc.type" placeholder="Type" required />
+    <input type="number" name="speed" [(ngModel)]="disc.speed" placeholder="Speed" required />
+    <input type="number" name="glide" [(ngModel)]="disc.glide" placeholder="Glide" required />
+    <input type="number" name="fade" [(ngModel)]="disc.fade" placeholder="Fade" required />
+    <input type="number" name="turn" [(ngModel)]="disc.turn" placeholder="Turn" required />
+  
+    <select name="manufacturerId" [(ngModel)]="selectedManufacturerId" required>
+      <option *ngFor="let m of manufacturers" [value]="m.id">
+        {{ m.name }}
+      </option>
+    </select>
+  
+    <button type="submit">Create Disc</button>
+  </form>
+  
