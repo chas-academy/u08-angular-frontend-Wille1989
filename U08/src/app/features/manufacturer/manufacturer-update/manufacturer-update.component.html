@@ -1,0 +1,11 @@
+<p>manufacturer-update works!</p>
+
+<div *ngIf="editingManufacturer">
+    <h4>Redigera tillverkare</h4>
+    <form (ngSubmit)="saveManufacturer()" #editForm="ngForm">
+      <input type="text" name="name" [(ngModel)]="editingManufacturer.name" placeholder="Namn" required>
+      <input type="text" name="country" [(ngModel)]="editingManufacturer.country" placeholder="Land" required>
+      <button type="submit">Spara</button>
+      <button type="button" (click)="cancelEdit()">Avbryt</button>
+    </form>
+  </div>
