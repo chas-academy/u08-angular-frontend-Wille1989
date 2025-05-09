@@ -1,0 +1,11 @@
+<p>manufacturer-list works!</p>
+
+<div class="manufacturer-list">
+    <a
+        *ngFor="let manufacturer of manufacturers"
+        [routerLink]="['/discs', manufacturer._id]"
+        class="manufacturer"
+    >
+        <h3>{{ manufacturer.name }}</h3>
+    </a>
+</div>

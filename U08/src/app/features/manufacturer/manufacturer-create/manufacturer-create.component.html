@@ -1,0 +1,33 @@
+
+<h2>Skapa ny tillverkare</h2>
+
+<form #manufacturerForm="ngForm" (ngSubmit)="createManufacturer()" novalidate>
+    <label for="name">Namn:</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      [(ngModel)]="newManufacturer.name"
+      #name="ngModel"
+      required
+    />
+    <div *ngIf="formSubmitted && name.invalid" class="error">
+      Namn är obligatoriskt.
+    </div>
+
+    <label for="country">Land:</label>
+    <input
+      type="text"
+      id="country"
+      name="country"
+      [(ngModel)]="newManufacturer.country"
+      #country="ngModel"
+      required
+    />
+    <div *ngIf="formSubmitted && country.invalid" class="error">
+      Land är obligatoriskt.
+    </div>
+
+    <button type="submit" [disabled]="manufacturerForm.invalid">Skapa</button>
+  </form>
+  

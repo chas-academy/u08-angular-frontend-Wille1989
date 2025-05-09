@@ -1,0 +1,23 @@
+<p>disc-list works!</p>
+
+<div class="search-disc">
+    <input
+  type="text"
+  placeholder="Sök disc..."
+  [(ngModel)]="searchTerm"
+  (input)="onSearchChange()"
+/>
+</div>
+
+<div class="disc-list">
+    <div *ngFor="let disc of discs" class="disc-card">
+        <h3>{{ disc.title }}</h3>
+        <ul>
+            <li>Tillverkare: {{ disc.manufacturer.name }}</li>
+            <li>Speed: {{ disc.speed }}</li>
+            <li>Glide: {{ disc.glide }}</li>
+            <li>Turn: {{ disc.turn }}</li>
+            <li>Fade: {{ disc.fade }}</li>
+        </ul>
+    </div>
+</div>
