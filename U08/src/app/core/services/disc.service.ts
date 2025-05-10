@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { Disc } from '../../features/models/disc.model';
 import { ApiResponse } from '../../features/models/api-response.model';
 
@@ -19,5 +20,20 @@ export class DiscService {
   searchDiscs(term: string): Observable<ApiResponse<Disc[]>> {
     const params = new HttpParams().set('search', term);
     return this.http.get<ApiResponse<Disc[]>>(this.apiUrl, { params });
+  }
+
+  createDisc(disc: Disc): Observable<ApiResponse<Disc>> {
+    const url = 'https://u05-wbsp.onrender.com/api/discs/create';
+    return this.http.post<ApiResponse<Disc>>(url, disc);
+  }
+
+  updateDiscPartial(_id: string, updates: Partial<Disc>): Observable<ApiResponse<Disc>> {
+    return this.http.patch<ApiResponse<Disc>>(
+      `https://u05-wbsp.onrender.com/api/discs/update/${_id}`,updates);
+  }
+
+  getDiscById(_id: string): Observable<ApiResponse<Disc[]>> {
+    return this.http.get<ApiResponse<Disc[]>>(
+      `https://u05-wbsp.onrender.com/api/discs/show/${_id}`);
   }
 }

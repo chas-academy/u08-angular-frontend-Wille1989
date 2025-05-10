@@ -10,3 +10,5 @@ export interface Disc {
     turn: number;
     manufacturer: Manufacturer;
 }
+
+export type PartialDisc = Partial<Disc>;

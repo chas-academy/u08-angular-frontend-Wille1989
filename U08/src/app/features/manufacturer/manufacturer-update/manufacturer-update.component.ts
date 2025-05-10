@@ -9,6 +9,7 @@ import { ManufacturerService } from '../../../core/services/manufacturer.service
 
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { ManufacturerCreateComponent } from '../manufacturer-create/manufacturer-create.component';
 
 @Component({
   selector: 'app-manufacturer-update',
@@ -18,18 +19,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ManufacturerUpdateComponent implements OnInit {
   editingManufacturer: Manufacturer | null = null;
+  updateMessage: string | null = null;
 
   constructor(
     private manufacturerService: ManufacturerService,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    console.log('Route ID:', id);
     if(id) {
       this.manufacturerService.getManufacturerById(id).subscribe((ApiResponse) => {
-        this.editingManufacturer = ApiResponse.data;
-      })
+        console.log('API response:', ApiResponse);
+        this.editingManufacturer = ApiResponse.data || ApiResponse;
+      });
     }
     }
 
@@ -49,7 +53,18 @@ export class ManufacturerUpdateComponent implements OnInit {
         this.editingManufacturer._id,
         updates
       ).subscribe(() => {
+        const manufacturerId = this.editingManufacturer?._id;
+
         this.editingManufacturer = null;
+        this.updateMessage = 'Tillverkaren uppdaterad!';
+
+        setTimeout(() => {
+          if( manufacturerId) {
+            this.router.navigate(['/discs', manufacturerId]);
+          } else {
+            this.router.navigate(['/discs']);
+          }
+        }, 2000);
       });
     }
   }

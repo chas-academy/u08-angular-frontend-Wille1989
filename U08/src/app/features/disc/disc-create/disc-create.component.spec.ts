@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 import { DiscCreateComponent } from './disc-create.component';
+import { DiscService } from '../../../core/services/disc.service';
+import { ManufacturerService } from '../../../core/services/manufacturer.service';
+
 
 describe('DiscCreateComponent', () => {
   let component: DiscCreateComponent;
@@ -8,7 +13,17 @@ describe('DiscCreateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DiscCreateComponent]
+      imports: [DiscCreateComponent],
+      providers: [
+        {
+          provide: DiscService,
+          useValue: { createDisc: () => of({}) }
+        },
+        {
+          provide: ManufacturerService,
+          useValue: { getAllManufacturers: () => of({ data: [] }) }
+        }
+      ]
     })
     .compileComponents();
 

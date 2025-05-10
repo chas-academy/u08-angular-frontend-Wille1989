@@ -18,7 +18,6 @@ export class ManufacturerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.manufacturerService.getAllManufacturers().subscribe((response) => {
-      console.log(response);
       this.manufacturers = response.data;
     });
   }

@@ -9,6 +9,10 @@
 />
 </div>
 
+<a [routerLink]="['/update/manufacturer', manufacturerId]">
+  <button>Redigera tillverkare</button>
+</a>
+
 <div class="disc-list">
     <div *ngFor="let disc of discs" class="disc-card">
         <h3>{{ disc.title }}</h3>

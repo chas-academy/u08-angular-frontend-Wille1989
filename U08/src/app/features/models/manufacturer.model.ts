@@ -3,3 +3,5 @@ export interface Manufacturer {
     name: string;
     country: string;
 }
+
+export type PartialManufacturer = Partial<Manufacturer>;

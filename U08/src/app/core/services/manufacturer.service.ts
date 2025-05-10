@@ -23,4 +23,14 @@ export class ManufacturerService {
       data
     );
   }
+
+  updateManufacturerPartial(_id: string, updates: Partial<Manufacturer>): Observable<ApiResponse<Manufacturer>> {
+    return this.http.patch<ApiResponse<Manufacturer>>(
+      `https://u05-wbsp.onrender.com/api/manufacturer/update/${_id}`, updates)
+  }
+
+  getManufacturerById(_id: string): Observable<ApiResponse<Manufacturer>> {
+    return this.http.get<ApiResponse<Manufacturer>>(
+      `https://u05-wbsp.onrender.com/api/manufacturer/show/${_id}`);
+  }
 }

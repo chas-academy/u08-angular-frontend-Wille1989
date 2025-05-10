@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { DiscService } from '../../../core/services/disc.service';
 import { Disc } from '../../models/disc.model';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-disc-list',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './disc-list.component.html',
   styleUrls: ['./disc-list.component.css']
 })

@@ -1,17 +1,25 @@
-<p>disc-create works!</p>
 <form (ngSubmit)="onSubmit()" #discForm="ngForm">
-    <input type="text" name="title" [(ngModel)]="disc.title" placeholder="Title" required />
-    <input type="text" name="type" [(ngModel)]="disc.type" placeholder="Type" required />
-    <input type="number" name="speed" [(ngModel)]="disc.speed" placeholder="Speed" required />
-    <input type="number" name="glide" [(ngModel)]="disc.glide" placeholder="Glide" required />
-    <input type="number" name="fade" [(ngModel)]="disc.fade" placeholder="Fade" required />
-    <input type="number" name="turn" [(ngModel)]="disc.turn" placeholder="Turn" required />
-  
-    <select name="manufacturerId" [(ngModel)]="selectedManufacturerId" required>
-      <option *ngFor="let m of manufacturers" [value]="m.id">
-        {{ m.name }}
-      </option>
+
+    <select name="manufacturerId" aria-label="Select manufacturer" [(ngModel)]="selectedManufacturerId" required>
+        <option *ngFor="let m of manufacturers" [value]="m._id">
+          {{ m.name }}
+        </option>
+      </select>
+
+    <input type="text" name="title" [(ngModel)]="disc.title" placeholder="Title" required/>
+
+    <label for="typeSelect">Type:</label>
+    <select id="typeSelect" name="type" [(ngModel)]="disc.type" required>
+        <option [ngValue]="'Distance Driver'">Distance Driver</option>
+        <option [ngValue]="'Driver'">Driver</option>
+        <option [ngValue]="'Mid-Range'">Mid-Range</option>
+        <option [ngValue]="'Putter'">Putter</option>
     </select>
+
+    <input type="number" name="speed" [(ngModel)]="disc.speed" placeholder="Speed" required/>
+    <input type="number" name="glide" [(ngModel)]="disc.glide" placeholder="Glide" required/>
+    <input type="number" name="fade" [(ngModel)]="disc.fade" placeholder="Fade" required/>
+    <input type="number" name="turn" [(ngModel)]="disc.turn" placeholder="Turn" required/>
   
     <button type="submit">Create Disc</button>
   </form>

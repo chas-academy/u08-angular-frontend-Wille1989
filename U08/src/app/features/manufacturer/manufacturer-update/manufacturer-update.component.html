@@ -1,4 +1,6 @@
-<p>manufacturer-update works!</p>
+<div *ngIf="updateMessage" class="flash-message">
+  {{ updateMessage }}
+</div>
 
 <div *ngIf="editingManufacturer">
     <h4>Redigera tillverkare</h4>
