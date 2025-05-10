@@ -36,6 +36,7 @@ export class DiscListComponent implements OnInit {
     this.discService.getAllDiscs().subscribe((response) => {
       this.allDiscs = response.data.map(disc => ({
         ...disc,
+        id: disc._id,
         title: disc.title.toUpperCase(),
         manufacturer: {
           ...disc.manufacturer,

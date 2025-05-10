@@ -1,1 +1,52 @@
-<p>disc-update works!</p>
+<div *ngIf="editingDisc; else loading">
+  <h4>Redigera disc</h4>
+
+  <!-- Flash-meddelande -->
+  <div *ngIf="updateMessage" class="flash-message">
+    {{ updateMessage }}
+  </div>
+
+  <form (ngSubmit)="saveDisc()" #editForm="ngForm">
+    <label>
+      Titel:
+      <input type="text" name="title" [(ngModel)]="editingDisc.title" required />
+    </label>
+
+    <label>
+      Typ:
+      <select name="type" [(ngModel)]="editingDisc.type" required>
+        <option value="Putter">Putter</option>
+        <option value="Midrange">Midrange</option>
+        <option value="Fairway">Fairway</option>
+        <option value="Distance">Distance Driver</option>
+      </select>
+    </label>
+
+    <label>
+      Speed:
+      <input type="number" name="speed" [(ngModel)]="editingDisc.speed" required />
+    </label>
+
+    <label>
+      Glide:
+      <input type="number" name="glide" [(ngModel)]="editingDisc.glide" required />
+    </label>
+
+    <label>
+      Turn:
+      <input type="number" name="turn" [(ngModel)]="editingDisc.turn" required />
+    </label>
+
+    <label>
+      Fade:
+      <input type="number" name="fade" [(ngModel)]="editingDisc.fade" required />
+    </label>
+
+    <button type="submit">Spara</button>
+    <button type="button" (click)="cancelEdit()">Avbryt</button>
+  </form>
+</div>
+
+<ng-template #loading>
+  <p>Laddar disc-data...</p>
+</ng-template>

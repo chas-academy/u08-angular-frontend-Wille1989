@@ -40,7 +40,7 @@ describe('DiscListComponent', () => {
   it('should load disc on init', () => {
     const mockDiscs = [
       {
-      id: '666',
+      _id: '666',
       title: 'testDisc',
       type: 'Driver',
       speed: 12,
@@ -71,7 +71,7 @@ describe('DiscListComponent', () => {
   it('should call searchDisc when searchTerm is provided', () => {
     const mockSearchResults = [
       { 
-        id: '1', 
+        _id: '1', 
         title: 'gamma',
         type: 'Driver',
         fade: 12,

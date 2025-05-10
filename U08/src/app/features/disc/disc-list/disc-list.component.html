@@ -15,7 +15,10 @@
 
 <div class="disc-list">
     <div *ngFor="let disc of discs" class="disc-card">
-        <h3>{{ disc.title }}</h3>
+        <h3>
+      <a [routerLink]="['/show/disc', disc._id]">{{ disc.title }}</a>
+      <span *ngIf="!disc._id">{{ disc.title }} (saknar ID)</span>
+        </h3>
         <ul>
             <li>Tillverkare: {{ disc.manufacturer.name }}</li>
             <li>Speed: {{ disc.speed }}</li>

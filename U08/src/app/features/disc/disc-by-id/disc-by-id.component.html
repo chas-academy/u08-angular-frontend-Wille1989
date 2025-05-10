@@ -1,0 +1,20 @@
+<p>disc-by-id works!</p>
+
+<div *ngIf="showDisc; else loading">
+  <h2>{{ showDisc.title }}</h2>
+  <ul>
+    <li>Tillverkare: {{ showDisc.manufacturer.name }}</li>
+    <li>Typ: {{ showDisc.type }}</li>
+    <li>Speed: {{ showDisc.speed }}</li>
+    <li>Glide: {{ showDisc.glide }}</li>
+    <li>Turn: {{ showDisc.turn }}</li>
+    <li>Fade: {{ showDisc.fade }}</li>
+  </ul>
+
+  <!-- Redigera-knapp -->
+  <button (click)="editDisc()">Redigera disc</button>
+</div>
+
+<ng-template #loading>
+  <p>Laddar disc-data...</p>
+</ng-template>
