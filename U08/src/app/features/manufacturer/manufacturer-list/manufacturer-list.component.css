@@ -1,11 +1,36 @@
-.shared-link {
-  color: #007bff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s, text-decoration 0.3s;
+.manufacturer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 100%;
 }
 
-.shared-link:hover {
-  color: #0056b3;
-  text-decoration: underline;
+.manufacturer-list h2 {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  margin-bottom: 0.5rem;
+}
+
+.manufacturer-list a {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  background-color: #f4f4f4;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.2s;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.manufacturer-list a:hover {
+  background-color: #e0e0e0;
+}
+
+.manufacturer-list h3 {
+  margin: 0;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

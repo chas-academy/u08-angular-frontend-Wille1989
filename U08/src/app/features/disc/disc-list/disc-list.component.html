@@ -35,10 +35,14 @@
         <ul>
             <li>Tillverkare: {{ disc.manufacturer.name }}</li>
             <li>Type: {{ disc.type }}</li>
-            <li>Speed: {{ disc.speed }}</li>
-            <li>Glide: {{ disc.glide }}</li>
-            <li>Turn: {{ disc.turn }}</li>
-            <li>Fade: {{ disc.fade }}</li>
+            <li>
+            <div class="flight-numbers">
+              <span>Speed: {{ disc.speed }}</span>
+              <span>Glide: {{ disc.glide }}</span>
+              <span>Turn: {{ disc.turn }}</span>
+              <span>Fade: {{ disc.fade }}</span>
+            </div>
+          </li>
         </ul>
     </div>
 </div>

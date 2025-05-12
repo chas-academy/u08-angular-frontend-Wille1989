@@ -1,24 +1,23 @@
-<div *ngIf="showManufacturer; else loading">
+<div *ngIf="showManufacturer; else loading" class="manufacturer-details">
   <h2>{{ showManufacturer.name }}</h2>
   <ul>
-    <li>Tillverkare: {{ showManufacturer.country }}</li>
+    <li>Land: {{ showManufacturer.country }}</li>
   </ul>
-</div>
 
-<a
-  *ngIf="showManufacturer"
-  [routerLink]="[
-    '/',
-    {
-      outlets: {
-        left: ['update', 'manufacturer', showManufacturer._id],
-        right: ['discs', showManufacturer._id]
+  <a
+    [routerLink]="[
+      '/',
+      {
+        outlets: {
+          left: ['update', 'manufacturer', showManufacturer._id],
+          right: ['discs', showManufacturer._id]
+        }
       }
-    }
-  ]"
->
-  <button>Redigera tillverkare</button>
-</a>
+    ]"
+  >
+    <button>Redigera tillverkare</button>
+  </a>
+</div>
 
 <ng-template #loading>
   <p>Laddar disc-data...</p>

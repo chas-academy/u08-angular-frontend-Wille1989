@@ -9,3 +9,77 @@
   color: #0056b3;
   text-decoration: underline;
 }
+
+.search-disc {
+  margin-bottom: 1rem;
+}
+
+.search-disc input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.no-results {
+  padding: 0.75rem;
+  background-color: #ffeeba;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  color: #856404;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.disc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.disc-card {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+  border-radius: 6px;
+}
+
+.disc-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.shared-link {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.shared-link:hover {
+  text-decoration: underline;
+}
+
+.disc-card ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.disc-card li {
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+.flight-numbers {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.flight-numbers span {
+  background-color: #eaeaea;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
