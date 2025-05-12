@@ -1,6 +1,8 @@
+<h2>Skapa ny disc</h2>
+
 <form (ngSubmit)="onSubmit()" #discForm="ngForm">
 
-    <select name="manufacturerId" aria-label="Select manufacturer" [(ngModel)]="selectedManufacturerId" required>
+    <select name="manufacturerId" aria-label="Select manufacturer" [(ngModel)]="disc.manufacturer" required>
         <option *ngFor="let m of manufacturers" [value]="m._id">
           {{ m.name }}
         </option>
@@ -21,6 +23,6 @@
     <input type="number" name="fade" [(ngModel)]="disc.fade" placeholder="Fade" required/>
     <input type="number" name="turn" [(ngModel)]="disc.turn" placeholder="Turn" required/>
   
-    <button type="submit">Create Disc</button>
+    <button type="submit">Lägg till Disc</button>
   </form>
   

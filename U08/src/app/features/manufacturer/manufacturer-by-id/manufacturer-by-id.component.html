@@ -1,0 +1,25 @@
+<div *ngIf="showManufacturer; else loading">
+  <h2>{{ showManufacturer.name }}</h2>
+  <ul>
+    <li>Tillverkare: {{ showManufacturer.country }}</li>
+  </ul>
+</div>
+
+<a
+  *ngIf="showManufacturer"
+  [routerLink]="[
+    '/',
+    {
+      outlets: {
+        left: ['update', 'manufacturer', showManufacturer._id],
+        right: ['discs', showManufacturer._id]
+      }
+    }
+  ]"
+>
+  <button>Redigera tillverkare</button>
+</a>
+
+<ng-template #loading>
+  <p>Laddar disc-data...</p>
+</ng-template>

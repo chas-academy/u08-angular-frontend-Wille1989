@@ -1,7 +1,7 @@
 import { Manufacturer } from "./manufacturer.model";
 
 export interface Disc {
-    id: string;
+    _id: string;
     title: string;
     type: string;
     speed: number;
@@ -12,3 +12,13 @@ export interface Disc {
 }
 
 export type PartialDisc = Partial<Disc>;
+
+export interface DiscCreate {
+  manufacturer: string;
+  title: string;
+  type: "Distance Driver" | "Driver" | "Mid-Range" | "Putter";
+  speed: number;
+  glide: number;
+  turn: number;
+  fade: number;
+}

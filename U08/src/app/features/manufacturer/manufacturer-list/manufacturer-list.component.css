@@ -1,0 +1,11 @@
+.shared-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s, text-decoration 0.3s;
+}
+
+.shared-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}

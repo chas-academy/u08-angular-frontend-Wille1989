@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { DiscService } from '../../../core/services/disc.service';
 import { ManufacturerService } from '../../../core/services/manufacturer.service';
 
-import { Disc } from '../../models/disc.model';
+import { DiscCreate } from '../../models/disc.model';
 import { Manufacturer } from '../../models/manufacturer.model';
 import { createEmptyDisc } from '../../models/disc.factory';
 import { FormsModule } from '@angular/forms';
@@ -19,9 +19,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './disc-create.component.css'
 })
 export class DiscCreateComponent implements OnInit {
-  disc: Disc = createEmptyDisc();
+  disc: DiscCreate = createEmptyDisc();
   manufacturers: Manufacturer[] = [];
-  selectedManufacturerId: string = '';
 
   constructor(
     private discService: DiscService,
@@ -39,13 +38,17 @@ export class DiscCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    const newDisc: Disc = {
-      ...this.disc,
-      manufacturer: { _id: this.selectedManufacturerId, name: '', country: '' }
-    }
+  console.log('Skickar till backend:', this.disc);
 
-    this.discService.createDisc(newDisc).subscribe(() => {
-      console.log('Disc created!');
-    });
-  }
+  this.discService.createDisc(this.disc).subscribe({
+    next: () => {
+      alert('Disc skapad!');
+      // Lägg gärna till redirect här
+    },
+    error: err => {
+      console.error('Skapande misslyckades:', err);
+      alert('Något gick fel. Kontrollera att alla fält är korrekt ifyllda.');
+    }
+  });
+}
 }

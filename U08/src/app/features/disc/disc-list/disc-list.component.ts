@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
-
 @Component({
   selector: 'app-disc-list',
   standalone: true,
@@ -22,8 +21,8 @@ export class DiscListComponent implements OnInit {
 
   constructor(
     private discService: DiscService,
-    private route: ActivatedRoute) { }
-
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -32,8 +31,8 @@ export class DiscListComponent implements OnInit {
     });
   }
 
-    private loadDiscs(): void {
-    this.discService.getAllDiscs().subscribe((response) => {
+  private loadDiscs(): void {
+    this.discService.getAllDiscs().subscribe(response => {
       this.allDiscs = response.data.map(disc => ({
         ...disc,
         id: disc._id,
@@ -42,27 +41,30 @@ export class DiscListComponent implements OnInit {
           ...disc.manufacturer,
           name: disc.manufacturer.name.toUpperCase()
         }
-      }))
-      .sort((a,b) => a.title.localeCompare(b.title));
-
-      this.discs = [...this.allDiscs];
+      })).sort((a, b) => a.title.localeCompare(b.title));
 
       this.discs = this.manufacturerId
-      ? this.allDiscs.filter(d => d.manufacturer._id === this.manufacturerId)
-      : [...this.allDiscs];
+        ? this.allDiscs.filter(d => d.manufacturer._id === this.manufacturerId)
+        : [...this.allDiscs];
     });
   }
 
   onSearchChange(): void {
-    if(this.searchTerm.trim() === '' ){
-      this.loadDiscs();
-      return;
-    }
+    const trimmed = this.searchTerm.trim().toLowerCase();
 
-    this.discService.searchDiscs(this.searchTerm).subscribe((response) => {
-      this.allDiscs = response.data;
-      this.discs = [...this.allDiscs];
-    });
+    const filtered = this.manufacturerId
+    ? this.allDiscs.filter(d =>
+        d.manufacturer._id === this.manufacturerId &&
+        d.title.toLowerCase().includes(trimmed)
+      )
+    : this.allDiscs.filter(d =>
+        d.title.toLowerCase().includes(trimmed)
+      );
+
+  this.discs = trimmed === '' ? (
+    this.manufacturerId
+      ? this.allDiscs.filter(d => d.manufacturer._id === this.manufacturerId)
+      : [...this.allDiscs]
+  ) : filtered;
   }
-
 }

@@ -1,0 +1,23 @@
+:host {
+  display: grid;
+  grid-template-areas: "nav main";
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 1fr;
+  height: 100vh;
+}
+
+nav {
+  grid-area: nav;
+  background: #8d8d90;
+  color: white;
+  padding: 1rem;
+}
+
+main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* två lika stora kolumner */
+  gap: 1rem;
+  padding: 1rem;
+  overflow-y: auto;
+}

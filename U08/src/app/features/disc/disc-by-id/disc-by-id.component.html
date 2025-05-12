@@ -1,4 +1,5 @@
-<p>disc-by-id works!</p>
+
+<h3>Disc Information</h3>
 
 <div *ngIf="showDisc; else loading">
   <h2>{{ showDisc.title }}</h2>
@@ -13,6 +14,8 @@
 
   <!-- Redigera-knapp -->
   <button (click)="editDisc()">Redigera disc</button>
+
+  <button (click)="confirmDelete()">Ta bort disc</button>
 </div>
 
 <ng-template #loading>

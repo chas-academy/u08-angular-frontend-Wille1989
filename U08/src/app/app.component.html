@@ -1,2 +1,17 @@
+<nav>
+  <app-navigation-buttons></app-navigation-buttons>
+</nav>
 
+<!-- Standard-rutter som t.ex. skapa/uppdatera visas här -->
 <router-outlet></router-outlet>
+
+<main class="main-layout">
+  <section class="manufacturers">
+    <router-outlet name="left"></router-outlet>
+  </section>
+
+  <section class="discs">
+    <router-outlet name="right"></router-outlet>
+  </section>
+</main>
+

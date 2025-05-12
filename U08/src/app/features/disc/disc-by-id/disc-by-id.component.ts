@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class DiscByIdComponent implements OnInit {
   showDisc: Disc | null = null;
+  updateMessage: string | null = null;
 
   constructor( 
     private discService: DiscService,
@@ -31,8 +32,27 @@ export class DiscByIdComponent implements OnInit {
   }
 
   editDisc() {
-  if (this.showDisc && this.showDisc._id) {
-    this.router.navigate(['/update/disc', this.showDisc._id]);
+    if (this.showDisc && this.showDisc._id) {
+      this.router.navigate([
+        {
+          outlets: {
+            left: ['update', 'disc', this.showDisc._id],
+          }
+        }
+      ]);
+    }
   }
-}
+
+  confirmDelete() {
+    if (confirm('Är du säker på att du vill ta bort denna disc?')) {
+      if (this.showDisc?._id) {
+        this.discService.deleteDiscById(this.showDisc._id).subscribe(() => {
+          this.updateMessage = 'Disc raderad!';
+          setTimeout(() => {
+            this.router.navigate(['/discs']);
+          }, 1500);
+        });
+      }
+    }
+  }
 }

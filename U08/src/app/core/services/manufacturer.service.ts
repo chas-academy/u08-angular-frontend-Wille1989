@@ -33,4 +33,8 @@ export class ManufacturerService {
     return this.http.get<ApiResponse<Manufacturer>>(
       `https://u05-wbsp.onrender.com/api/manufacturer/show/${_id}`);
   }
+
+  deleteManufacturerById(_id: string): Observable<ApiResponse<Manufacturer>> {
+    return this.http.delete<ApiResponse<Manufacturer>>(`https://u05-wbsp.onrender.com/api/manufacturer/delete/${_id}`);
+  }
 }

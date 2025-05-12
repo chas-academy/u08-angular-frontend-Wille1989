@@ -31,7 +31,6 @@ export class ManufacturerCreateComponent {
 
     this.manufacturerService.createManufacturer(this.newManufacturer).subscribe({
       next: (response) => {
-        console.log('Tillverkare skapad:', response.data);
         this.newManufacturer = { name: '', country: '' };
         this.formSubmitted = false;
         alert('Tillverkare skapad!');

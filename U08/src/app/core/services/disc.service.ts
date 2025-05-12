@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Disc } from '../../features/models/disc.model';
+import { Disc, DiscCreate } from '../../features/models/disc.model';
 import { ApiResponse } from '../../features/models/api-response.model';
 
 @Injectable({
@@ -22,7 +22,7 @@ export class DiscService {
     return this.http.get<ApiResponse<Disc[]>>(this.apiUrl, { params });
   }
 
-  createDisc(disc: Disc): Observable<ApiResponse<Disc>> {
+  createDisc(disc: DiscCreate): Observable<ApiResponse<Disc>> {
     const url = 'https://u05-wbsp.onrender.com/api/discs/create';
     return this.http.post<ApiResponse<Disc>>(url, disc);
   }
@@ -32,8 +32,13 @@ export class DiscService {
       `https://u05-wbsp.onrender.com/api/discs/update/${_id}`,updates);
   }
 
-  getDiscById(_id: string): Observable<ApiResponse<Disc[]>> {
-    return this.http.get<ApiResponse<Disc[]>>(
+  getDiscById(_id: string): Observable<ApiResponse<Disc>> {
+    return this.http.get<ApiResponse<Disc>>(
       `https://u05-wbsp.onrender.com/api/discs/show/${_id}`);
+  }
+
+  deleteDiscById(_id: string): Observable<ApiResponse<Disc>> {
+    return this.http.delete<ApiResponse<Disc>>(
+      `https://u05-wbsp.onrender.com/api/discs/delete/${_id}`);
   }
 }

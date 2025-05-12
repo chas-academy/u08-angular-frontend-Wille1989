@@ -61,20 +61,25 @@ export class DiscUpdateComponent implements OnInit {
         updates
       ).subscribe(() => {
         const discId = this.editingDisc?._id;
-
-        this.editingDisc = null;
         this.updateMessage = 'Disc uppdaterad!';
 
         setTimeout(() => {
+          this.editingDisc = null;
+
           if (discId) {
-            this.router.navigate(['/discs', discId]);
-          } else {
-            this.router.navigate(['/discs']);
-          }
-        }, 1200);
+            this.router.navigate([
+              {
+                outlets: {
+                  left: ['manufacturers'],
+                  right: ['discs']
+                }
+              }]);
+          } 
+        }, 600);
       });
     }
   }
+
    cancelEdit() {
       this.editingDisc = null;
       this.router.navigate(['/']);

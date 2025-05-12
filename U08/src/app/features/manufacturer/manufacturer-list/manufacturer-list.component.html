@@ -1,10 +1,13 @@
-<p>manufacturer-list works!</p>
-
 <div class="manufacturer-list">
     <a
         *ngFor="let manufacturer of manufacturers"
-        [routerLink]="['/discs', manufacturer._id]"
-        class="manufacturer"
+        [routerLink]="['/', { outlets: 
+            { 
+                left: ['show', 'manufacturer', manufacturer._id], 
+                right: ['discs', manufacturer._id] 
+                } 
+            }]"
+        class="shared-link"
     >
         <h3>{{ manufacturer.name }}</h3>
     </a>

@@ -1,5 +1,3 @@
-<p>disc-list works!</p>
-
 <div class="search-disc">
     <input
   type="text"
@@ -9,18 +7,30 @@
 />
 </div>
 
-<a [routerLink]="['/update/manufacturer', manufacturerId]">
-  <button>Redigera tillverkare</button>
-</a>
+<div *ngIf="discs.length === 0 && searchTerm.trim() !== ''" class="no-results">
+  Inga discar matchar din sökning.
+</div>
 
 <div class="disc-list">
     <div *ngFor="let disc of discs" class="disc-card">
         <h3>
-      <a [routerLink]="['/show/disc', disc._id]">{{ disc.title }}</a>
+      <a [routerLink]="['/', 
+      { 
+        outlets: 
+        { 
+          left: ['show', 'disc', disc._id], 
+          right: ['discs', manufacturerId] 
+        } 
+      }
+      ]" 
+      class="shared-link">{{ disc.title }}</a>
+      
+      
       <span *ngIf="!disc._id">{{ disc.title }} (saknar ID)</span>
         </h3>
         <ul>
             <li>Tillverkare: {{ disc.manufacturer.name }}</li>
+            <li>Type: {{ disc.type }}</li>
             <li>Speed: {{ disc.speed }}</li>
             <li>Glide: {{ disc.glide }}</li>
             <li>Turn: {{ disc.turn }}</li>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { ActivationStart, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { Manufacturer } from '../../models/manufacturer.model';
@@ -9,8 +9,6 @@ import { ManufacturerService } from '../../../core/services/manufacturer.service
 
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { ManufacturerCreateComponent } from '../manufacturer-create/manufacturer-create.component';
-
 @Component({
   selector: 'app-manufacturer-update',
   imports: [CommonModule, RouterModule, FormsModule],
@@ -24,14 +22,13 @@ export class ManufacturerUpdateComponent implements OnInit {
   constructor(
     private manufacturerService: ManufacturerService,
     public route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router)
+    { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log('Route ID:', id);
     if(id) {
       this.manufacturerService.getManufacturerById(id).subscribe((ApiResponse) => {
-        console.log('API response:', ApiResponse);
         this.editingManufacturer = ApiResponse.data || ApiResponse;
       });
     }
@@ -59,12 +56,16 @@ export class ManufacturerUpdateComponent implements OnInit {
         this.updateMessage = 'Tillverkaren uppdaterad!';
 
         setTimeout(() => {
-          if( manufacturerId) {
-            this.router.navigate(['/discs', manufacturerId]);
-          } else {
-            this.router.navigate(['/discs']);
+          if (manufacturerId) {
+            this.router.navigate([
+              { outlets: { 
+                left: ['manufacturers'],
+                right: ['discs'] 
+              } 
+              }
+            ]);
           }
-        }, 2000);
+        }, 1000);
       });
     }
   }
@@ -72,5 +73,18 @@ export class ManufacturerUpdateComponent implements OnInit {
   cancelEdit() {
     this.editingManufacturer = null;
     this.router.navigate(['/']);
+  }
+
+  confirmDelete() {
+    if (confirm('Är du säker på att du vill ta bort tillverkare och tillhörande discar?')) {
+      if (this.editingManufacturer?._id) {
+        this.manufacturerService.deleteManufacturerById(this.editingManufacturer._id).subscribe(() => {
+          this.updateMessage = 'tillverkare raderad!';
+          setTimeout(() => {
+            this.router.navigate(['/']);
+          }, 1500);
+        });
+      }
+    }
   }
 }

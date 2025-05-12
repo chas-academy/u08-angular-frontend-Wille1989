@@ -1,18 +1,13 @@
-import { Disc } from "./disc.model";
+import { DiscCreate } from "./disc.model";
 
-export function createEmptyDisc(): Disc {
+export function createEmptyDisc(): DiscCreate {
     return {
-        id: '',
         title: '',
-        type: '',
+        type: 'Putter',
         speed: 0,
         glide: 0,
         fade: 0,
         turn: 0,
-        manufacturer: {
-            _id: '',
-            name: '',
-            country: ''
-        }
+        manufacturer: ''
     };
 }

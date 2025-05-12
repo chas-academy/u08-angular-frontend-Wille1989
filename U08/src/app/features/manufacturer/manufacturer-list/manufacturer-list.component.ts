@@ -3,8 +3,6 @@ import { ManufacturerService } from '../../../core/services/manufacturer.service
 import { Manufacturer } from '../../models/manufacturer.model';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
-
 @Component({
   selector: 'app-manufacturer-list',
   imports: [CommonModule, RouterModule],
