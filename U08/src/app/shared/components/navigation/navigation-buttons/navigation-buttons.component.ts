@@ -13,7 +13,6 @@ export class NavigationButtonsComponent {
 
   goHome() {
       this.router.navigate([{ outlets: { left: ['manufacturers'], right: ['discs'] } }]);
-      console.log('goHome knappen har tryckts!');
   }
 
   goCreateDisc() {

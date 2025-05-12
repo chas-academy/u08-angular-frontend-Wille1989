@@ -11,6 +11,10 @@
   Inga discar matchar din sökning.
 </div>
 
+<div *ngIf="discs.length === 0 && searchTerm.trim() === ''" class="no-results">
+  Denna tillverkare har inga discar upplagda.
+</div>
+
 <div class="disc-list">
     <div *ngFor="let disc of discs" class="disc-card">
         <h3>

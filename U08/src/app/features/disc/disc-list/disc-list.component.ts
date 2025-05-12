@@ -55,10 +55,20 @@ export class DiscListComponent implements OnInit {
     const filtered = this.manufacturerId
     ? this.allDiscs.filter(d =>
         d.manufacturer._id === this.manufacturerId &&
-        d.title.toLowerCase().includes(trimmed)
+        d.title.toLowerCase().includes(trimmed)||
+        d.type.toLocaleLowerCase().includes(trimmed)||
+        d.speed.toString().includes(trimmed) ||
+        d.glide.toString().includes(trimmed) ||
+        d.turn.toString().includes(trimmed) ||
+        d.fade.toString().includes(trimmed)
       )
     : this.allDiscs.filter(d =>
-        d.title.toLowerCase().includes(trimmed)
+        d.title.toLowerCase().includes(trimmed)||
+        d.type.toLocaleLowerCase().includes(trimmed)||
+        d.speed.toString().includes(trimmed) ||
+        d.glide.toString().includes(trimmed) ||
+        d.turn.toString().includes(trimmed) ||
+        d.fade.toString().includes(trimmed)
       );
 
   this.discs = trimmed === '' ? (

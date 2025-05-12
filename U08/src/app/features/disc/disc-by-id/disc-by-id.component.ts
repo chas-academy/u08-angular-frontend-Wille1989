@@ -23,34 +23,55 @@ export class DiscByIdComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.discService.getDiscById(id).subscribe((ApiResponse) => {
-        this.showDisc = ApiResponse.data || ApiResponse;
-      });
-    }
-  }
+  const id = this.route.snapshot.paramMap.get('id');
 
-  editDisc() {
-    if (this.showDisc && this.showDisc._id) {
-      this.router.navigate([
-        {
-          outlets: {
-            left: ['update', 'disc', this.showDisc._id],
-          }
-        }
-      ]);
-    }
+  if (id) {
+    this.discService.getDiscById(id).subscribe(ApiResponse => {
+      this.showDisc = ApiResponse.data || null;
+    });
   }
+}
+
+editDisc(): void {
+  if (this.showDisc?._id) {
+    this.router.navigate([
+      {
+        outlets: {
+          left: ['update', 'disc', this.showDisc._id],
+          right: ['discs', this.showDisc.manufacturer._id]
+        }
+      }
+    ]);
+  }
+}
+
+  
 
   confirmDelete() {
     if (confirm('Är du säker på att du vill ta bort denna disc?')) {
       if (this.showDisc?._id) {
         this.discService.deleteDiscById(this.showDisc._id).subscribe(() => {
           this.updateMessage = 'Disc raderad!';
+
           setTimeout(() => {
-            this.router.navigate(['/discs']);
-          }, 1500);
+            this.router.navigate([
+              {
+                outlets: {
+                  left: null,
+                  right: null
+                }
+              }
+            ]).then(() => {
+              this.router.navigate([
+                {
+                  outlets: {
+                    left: ['manufacturers'],
+                    right: ['discs']
+                  }
+                }
+              ]);
+            });
+          }, 700);
         });
       }
     }

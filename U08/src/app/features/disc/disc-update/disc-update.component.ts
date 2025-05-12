@@ -61,6 +61,7 @@ export class DiscUpdateComponent implements OnInit {
         updates
       ).subscribe(() => {
         const discId = this.editingDisc?._id;
+        const manufacturerId = this.editingDisc!.manufacturer._id;
         this.updateMessage = 'Disc uppdaterad!';
 
         setTimeout(() => {
@@ -70,8 +71,8 @@ export class DiscUpdateComponent implements OnInit {
             this.router.navigate([
               {
                 outlets: {
-                  left: ['manufacturers'],
-                  right: ['discs']
+                  left: ['show', 'disc', discId],
+                  right: ['discs', manufacturerId]
                 }
               }]);
           } 

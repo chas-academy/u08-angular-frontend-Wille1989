@@ -27,12 +27,13 @@ export class ManufacturerUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+
     if(id) {
       this.manufacturerService.getManufacturerById(id).subscribe((ApiResponse) => {
         this.editingManufacturer = ApiResponse.data || ApiResponse;
       });
     }
-    }
+  }
 
   saveManufacturer() {
     if(this.editingManufacturer) {
@@ -79,10 +80,30 @@ export class ManufacturerUpdateComponent implements OnInit {
     if (confirm('Är du säker på att du vill ta bort tillverkare och tillhörande discar?')) {
       if (this.editingManufacturer?._id) {
         this.manufacturerService.deleteManufacturerById(this.editingManufacturer._id).subscribe(() => {
-          this.updateMessage = 'tillverkare raderad!';
-          setTimeout(() => {
-            this.router.navigate(['/']);
-          }, 1500);
+
+          this.updateMessage = 'Tillverkare raderad!';
+          
+            setTimeout(() => {
+              this.router.navigate([
+                { 
+                  outlets: 
+                  { 
+                    left: null,
+                    right: null 
+                  } 
+                }
+              ]).then(() => {
+                this.router.navigate([
+                {
+                  outlets: 
+                  {
+                    left: ['manufacturers'],
+                    right: ['discs']
+                  }
+                  }
+                ]);
+              });
+            }, 700);
         });
       }
     }

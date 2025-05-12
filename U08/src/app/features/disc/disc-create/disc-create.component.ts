@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { DiscService } from '../../../core/services/disc.service';
 import { ManufacturerService } from '../../../core/services/manufacturer.service';
@@ -21,10 +22,12 @@ import { FormsModule } from '@angular/forms';
 export class DiscCreateComponent implements OnInit {
   disc: DiscCreate = createEmptyDisc();
   manufacturers: Manufacturer[] = [];
+  updateMessage: string | null = null;
 
   constructor(
     private discService: DiscService,
-    private manufacturerService: ManufacturerService
+    private manufacturerService: ManufacturerService,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
@@ -38,12 +41,20 @@ export class DiscCreateComponent implements OnInit {
   }
 
   onSubmit() {
-  console.log('Skickar till backend:', this.disc);
-
   this.discService.createDisc(this.disc).subscribe({
     next: () => {
-      alert('Disc skapad!');
-      // Lägg gärna till redirect här
+      this.updateMessage = 'Disc skapad!';
+
+      setTimeout(() => {
+        this.router.navigate([
+          {
+            outlets: {
+              left: ['manufacturers'],
+              right: ['discs']
+            }
+          }
+        ]);
+      }, 1000);
     },
     error: err => {
       console.error('Skapande misslyckades:', err);

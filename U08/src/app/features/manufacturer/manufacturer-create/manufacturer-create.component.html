@@ -30,4 +30,8 @@
 
     <button type="submit" [disabled]="manufacturerForm.invalid">Skapa</button>
   </form>
+
+  <div *ngIf="updateMessage" class="flash-message">
+    {{ updateMessage }}
+  </div>
   

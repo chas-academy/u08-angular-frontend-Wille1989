@@ -1,5 +1,7 @@
 <h2>Skapa ny disc</h2>
 
+
+
 <form (ngSubmit)="onSubmit()" #discForm="ngForm">
 
     <select name="manufacturerId" aria-label="Select manufacturer" [(ngModel)]="disc.manufacturer" required>
@@ -25,4 +27,8 @@
   
     <button type="submit">Lägg till Disc</button>
   </form>
+
+  <div *ngIf="updateMessage" class="flash-message">
+  {{ updateMessage }}
+  </div>
   

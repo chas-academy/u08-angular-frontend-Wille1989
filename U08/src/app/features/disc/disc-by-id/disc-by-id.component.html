@@ -21,3 +21,8 @@
 <ng-template #loading>
   <p>Laddar disc-data...</p>
 </ng-template>
+
+  <!-- Flash-meddelande -->
+  <div *ngIf="updateMessage" class="flash-message">
+    {{ updateMessage }}
+  </div>
