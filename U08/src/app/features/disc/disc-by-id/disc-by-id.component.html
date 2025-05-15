@@ -1,7 +1,6 @@
-
 <h3>Disc Information</h3>
 
-<div *ngIf="showDisc; else loading">
+<div *ngIf="showDisc; else loading" class="disc-details">
   <h2>{{ showDisc.title }}</h2>
   <ul>
     <li>Tillverkare: {{ showDisc.manufacturer.name }}</li>
@@ -14,7 +13,6 @@
 
   <!-- Redigera-knapp -->
   <button (click)="editDisc()">Redigera disc</button>
-
   <button (click)="confirmDelete()">Ta bort disc</button>
 </div>
 
@@ -22,7 +20,7 @@
   <p>Laddar disc-data...</p>
 </ng-template>
 
-  <!-- Flash-meddelande -->
-  <div *ngIf="updateMessage" class="flash-message">
-    {{ updateMessage }}
-  </div>
+<!-- Flash-meddelande -->
+<div *ngIf="updateMessage" class="flash-message">
+  {{ updateMessage }}
+</div>

@@ -18,3 +18,28 @@ label {
   margin-bottom: 15px;
   text-align: center;
 }
+
+.disc-details {
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.disc-details h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.disc-details ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.disc-details li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #555;
+}
