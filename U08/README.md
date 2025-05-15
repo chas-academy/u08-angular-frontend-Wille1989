@@ -9,6 +9,8 @@ Detta är en enkel, modulär frontend-applikation byggd med Angular som används
 
 Frontend och backend är separata projekt, vilket gör applikationen enkel att vidareutveckla, underhålla och testa.
 
+Figma skiss: <https://www.figma.com/design/QIHyUjewqUo94rPcKFhdKM/Untitled?node-id=67-2&t=A8AvLxyBK11FaXfw-1>
+
 Deployad version av projektet: <https://u08-wille1989.netlify.app>
 
 ## 🚀 Komma igång som utvecklare
