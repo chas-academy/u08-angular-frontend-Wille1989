@@ -20,10 +20,17 @@
         <option [ngValue]="'Putter'">Putter</option>
     </select>
 
-    <input type="number" name="speed" [(ngModel)]="disc.speed" placeholder="Speed" required/>
-    <input type="number" name="glide" [(ngModel)]="disc.glide" placeholder="Glide" required/>
-    <input type="number" name="fade" [(ngModel)]="disc.fade" placeholder="Fade" required/>
-    <input type="number" name="turn" [(ngModel)]="disc.turn" placeholder="Turn" required/>
+    <label for="speed">Speed:</label>
+    <input id="speed" type="number" name="speed" [(ngModel)]="disc.speed" required />
+
+    <label for="glide">Glide:</label>
+    <input id="glide" type="number" name="glide" [(ngModel)]="disc.glide" required />
+
+    <label for="fade">Fade:</label>
+    <input id="fade" type="number" name="fade" [(ngModel)]="disc.fade" required />
+
+    <label for="turn">Turn:</label>
+    <input id="turn" type="number" name="turn" [(ngModel)]="disc.turn" required />
   
     <button type="submit">Lägg till Disc</button>
   </form>
